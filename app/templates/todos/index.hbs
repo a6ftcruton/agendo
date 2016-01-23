@@ -1,0 +1,8 @@
+<div class="todo-container">
+  <h1>Todos</h1>
+    <ul>
+      {{#each model as |todo|}}
+        <li class="todo-item">{{todo.title}}</li>
+      {{/each}}
+    </ul>
+</div>
