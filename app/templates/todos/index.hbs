@@ -1,8 +1,9 @@
 <div class="todo-container">
   <h1>Todos</h1>
+  {{todo-input todo=todo action="createTodo"}}
     <ul>
       {{#each model as |todo|}}
-        <li class="todo-item">{{todo.title}}</li>
+        {{todo-item todo=todo}}
       {{/each}}
     </ul>
 </div>

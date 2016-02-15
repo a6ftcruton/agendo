@@ -42,14 +42,30 @@ export default function() {
     this.del('/contacts/:id', ['contact', 'addresses']);
   */
 
-  this.get('/todos', function() {
-    return { 
-      todos: [
-        {id: 1, title: 'First todo'},
-        {id: 2, title: 'Second todo'},
-        {id: 3, title: 'Third todo'},
-      ]
-    };
-  });
+  // this.get('/todos', function() {
+  //   return { 
+  //     todos: [
+  //       {id: 1, title: 'First todo'},
+  //       {id: 2, title: 'Second todo'},
+  //       {id: 3, title: 'Third todo'},
+  //     ]
+  //   };
+  // });
 
+  // this.get('/todos', function(db){
+  //   return {
+  //     todos: db.todos
+  //   };
+  // });
+
+  this.get('/todos');
+  this.post('/todos');
+  // this.post('/todos', function(db, request) {
+  //   console.log("db = ", db);
+  //   console.log("request = ", request);
+  //   var attrs = JSON.parse(request.requestBody).todo;
+  //   console.log("attrs = ", attrs);
+  //   var todo = db.todos.insert(attrs);
+  //   return todo;
+  // });
 }
