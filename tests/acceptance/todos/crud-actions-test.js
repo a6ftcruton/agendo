@@ -28,7 +28,6 @@ test('creating a new todo', function(assert) {
     fillIn('.new-todo input', todoTitle);
     andThen(() => {
       find('.new-todo input').trigger('submit');
-      // keyEvent('input', 'keyup', 13); //trigger the 'enter' keypress (doesn't jive with the acceptance test)
       andThen(() => {
         assert.ok(find(`.todo-item:contains(${{todoTitle}}))`), description);
         assert.equal(find('.new-todo input').val(), '', description2);
@@ -45,14 +44,14 @@ test('editing a todo', function(assert) {
 
   visit('/');
   andThen(() => {
-    click('.todo-item:contains("initial idea)');
+    click('.todo-item:contains("initial")');
     andThen(() => {
       fillIn('.edit-todo input', "better idea");
       andThen(() => {
-        find('.edit-todo input').trigger('submit');
+        keyEvent('.edit-todo input', 'keyup', 13);
         andThen(() => {
-          assert.equal(find('.edito-todo input').length, 0, description);
-          assert.equal(find('todo-item:contains:("better idea")').length, 1, description1);
+          assert.equal(find('.edit-todo input').length, 0, description);
+          assert.equal(find('.todo-item:contains("better idea")').length, 1, description1);
         });
       });
     });

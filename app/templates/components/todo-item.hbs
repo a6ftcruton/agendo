@@ -1,2 +1,6 @@
-{{todo.title}}
+{{#if isEditing}}
+  {{edit-todo title=todo.title action="editTodo" param=todo}} 
+{{else}}
+  {{todo.title}}
+{{/if}}
 
