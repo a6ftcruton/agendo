@@ -1,5 +1,5 @@
 {{#if isEditing}}
-  {{edit-todo title=todo.title action="update" param=todo}} 
+  {{edit-todo title=todo.title action="update" param=todo cancel="cancel"}}
 {{else}}
   {{input type="checkbox" checked=isComplete}}
   {{todo-title title=todo.title action='edit'}}

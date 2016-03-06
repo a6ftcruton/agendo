@@ -5,7 +5,7 @@ const { computed } = Ember;
 
 export default DS.Model.extend({
   title: DS.attr('string'),
-  isComplete: DS.attr('boolean'),
+  isComplete: DS.attr('boolean', { defaultValue: false }),
 
   isValid: computed('title', function() {
     return !Ember.isEmpty(this.get('title').trim()); 
