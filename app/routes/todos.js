@@ -27,6 +27,13 @@ export default Ember.Route.extend({
           record.set('title', data.get('title'));
         });
       }
+    },
+    deleteTodo(data) {
+      this.store.findRecord('todo', data.get('id')).then((record) => {
+        record.deleteRecord();
+        record.save();
+        //OR record.destroy();
+      });
     }
   }
 });

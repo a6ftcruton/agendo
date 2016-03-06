@@ -61,6 +61,7 @@ export default function() {
   this.get('/todos');
   this.post('/todos');
   this.put('/todos/:id');
+  this.del('/todos/:id');
   // this.post('/todos', function(db, request) {
   //   console.log("db = ", db);
   //   console.log("request = ", request);

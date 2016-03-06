@@ -2,5 +2,7 @@
   {{edit-todo title=todo.title action="editTodo" param=todo}} 
 {{else}}
   {{todo.title}}
+  <!-- note: have to pass deleteTodo into todo-item component so we can send the named action to the route -->
+  <button class="delete-todo" {{action "deleteTodo" todo}}>X</button>
 {{/if}}
 

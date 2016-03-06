@@ -57,3 +57,16 @@ test('editing a todo', function(assert) {
     });
   });
 });
+
+test('deleting a todo', function(assert) {
+  server.create('todo', {title: "you will delete me"});
+  const description = "a deleted todo is removed from the page"
+
+  visit('/');
+  andThen(() => {
+    click(find('.todo-item:contains("delete") .delete-todo'));
+    andThen(() => {
+      assert.equal(find('.todo-item').length, 0, description);
+    })
+  });
+});
