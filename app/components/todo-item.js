@@ -6,14 +6,18 @@ export default Ember.Component.extend({
 
   isEditing: false,
 
-  //translate a primitive action into a named action sent out of the component
-  click() {
-    this.set('isEditing', true);
-  },
+  // isComplete: Ember.computed.reads('isComplete'),
+
   actions: {
-    editTodo(data) {
+    edit() {
+      this.set('isEditing', true);
+    },
+    update(data) {
       this.sendAction('action', data);
       this.set('isEditing', false);
+    },
+    cancelEdit() {
+      console.log("hitting cancel edit in todo-item");
     },
     deleteTodo(data) {
       //weirdness = we define the button action as expected {{action "deleteTodo" todo}}

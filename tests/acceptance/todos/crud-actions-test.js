@@ -44,7 +44,7 @@ test('editing a todo', function(assert) {
 
   visit('/');
   andThen(() => {
-    click('.todo-item:contains("initial")');
+    click('.todo-item:contains("initial") p');
     andThen(() => {
       fillIn('.edit-todo input', "better idea");
       andThen(() => {
@@ -68,5 +68,18 @@ test('deleting a todo', function(assert) {
     andThen(() => {
       assert.equal(find('.todo-item').length, 0, description);
     })
+  });
+});
+
+test('marking a todo as complete', function(assert) {
+  server.create('todo', {title: "you complete me"});
+  const description = "adds a class of 'complete' to the todo";
+
+  visit('/');
+  andThen(() => {
+    click('.mark-as-complete');
+    andThen(() => {
+      assert.ok(find('.todo-item.complete'), description);
+    });
   });
 });

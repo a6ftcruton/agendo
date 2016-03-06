@@ -18,7 +18,7 @@ export default Ember.Route.extend({
         });
       }
     },
-    editTodo(data) {
+    update(data) {
       if(Ember.isEmpty(data.get('title').trim())) {
         alert("Sorry. Todos cannot be blank.");
         data.rollbackAttributes();

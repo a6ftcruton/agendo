@@ -3,7 +3,7 @@
   {{todo-input todo=todo action="createTodo"}}
     <ul>
       {{#each model as |todo|}}
-        {{todo-item todo=todo action="editTodo" deleteTodo="deleteTodo"}}
+        {{todo-item todo=todo action="update" deleteTodo="deleteTodo"}}
       {{/each}}
     </ul>
 </div>

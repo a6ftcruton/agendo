@@ -1,8 +1,8 @@
 {{#if isEditing}}
-  {{edit-todo title=todo.title action="editTodo" param=todo}} 
+  {{edit-todo title=todo.title action="update" param=todo}} 
 {{else}}
-  {{todo.title}}
-  <!-- note: have to pass deleteTodo into todo-item component so we can send the named action to the route -->
+  {{input type="checkbox" checked=isComplete}}
+  {{todo-title title=todo.title action='edit'}}
   <button class="delete-todo" {{action "deleteTodo" todo}}>X</button>
 {{/if}}
 
