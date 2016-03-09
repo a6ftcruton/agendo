@@ -6,4 +6,7 @@
         {{todo-item todo=todo action="update" deleteTodo="deleteTodo"}}
       {{/each}}
     </ul>
+    <div class="global-options">
+      {{complete-all update="update" model=model}}
+    </div>
 </div>

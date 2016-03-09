@@ -1,14 +1,18 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  tagName: 'li',
+  // tagName: 'li',
   classNames: ['todo-item'],
+  classNameBindings: ['isComplete:complete'],
 
+  isComplete: Ember.computed.reads('todo.complete'),
   isEditing: false,
 
   actions: {
     edit() {
-      this.set('isEditing', true);
+      if(!this.get('isComplete')) {
+        this.set('isEditing', true);
+      }
     },
     update(data) {
       this.sendAction('action', data);
@@ -20,6 +24,11 @@ export default Ember.Component.extend({
     },
     deleteTodo(data) {
       this.sendAction('deleteTodo', data);
+    },
+    toggleCompleted() {
+      let todo = this.get('todo');
+      todo.toggleProperty('complete');
+      this.send('update', todo);
     }
   }
 });

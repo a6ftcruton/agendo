@@ -24,7 +24,9 @@ export default Ember.Route.extend({
         data.rollbackAttributes();
       } else {
         this.store.findRecord('todo', data.get('id')).then((record) => {
-          record.set('title', data.get('title'));
+          // any reason to explicitly set these since they are being set already, just not saved to backend?
+          //   - would this just be to inform the store they've changed?
+          record.save();
         });
       }
     },
