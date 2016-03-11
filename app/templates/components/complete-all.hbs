@@ -1,5 +1,9 @@
-{{!#if allCompleted}}
-  <!-- Mark all as INCOMPLETE -->
-{{!else}}
-  Mark all as complete
-{{!/if}}
+{{#if hasTodos}}
+  {{#if allCompleted}}
+    Mark all INCOMPLETE
+  {{else}}
+    Mark all as complete
+  {{/if}}
+  Delete completed
+{{/if}}
+

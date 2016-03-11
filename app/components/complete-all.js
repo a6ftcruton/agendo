@@ -1,29 +1,35 @@
 import Ember from 'ember';
 
-export default Ember.Component.extend({
+const { computed, $, Component } = Ember;
+
+export default Component.extend({
   tagName: 'p',
   classNames: ['complete-all'],
 
-  hasTodos: function() {
+  hasTodos: computed('model.length', function() {
     return this.get('model.length') > 0
-  },
+  }),
 
-  //TODO - need this to be computed off change to any model's 'complete' property?
-  allCompleted: function() {
-    return this.get('model').isEvery('complete');
+  allCompleted: computed('model.@each.complete', function() {
+    return this.get('hasTodos') && this.get('model').isEvery('complete');
+  }), //better way to do this in newer versions of Ember?
+
+  toggleAll: function(value) {
+    //is there a better way to update the view? setting it in route doesn't check the boxes either
+    $('.mark-as-complete').prop('checked', value);
+
+    let todos = this.get('model');
+    todos.forEach((todo) => {
+      todo.set('complete', value);
+      this.sendAction('update', todo);
+    });
   },
 
   click() {
-    if (this.hasTodos && !this.allCompleted()) {
-
-      //is there a better way to update the view? setting it in route doesn't check the boxes either
-      Ember.$('.mark-as-complete').prop('checked', true);
-
-      let todos = this.get('model');
-      todos.forEach((todo) => {
-        todo.set('complete', true);
-        this.sendAction('update', todo);
-      });
+    if (!this.get('allCompleted')) {
+      this.toggleAll(true);
+    } else if (this.get('allCompleted')) {
+      this.toggleAll(false);
     }
   }
 });
