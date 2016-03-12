@@ -1,11 +1,19 @@
 import Ember from 'ember';
 
-export default Ember.Component.extend({
-  // tagName: 'li',
-  classNames: ['todo-item'],
-  classNameBindings: ['isComplete:complete'],
+const { computed, Component } = Ember;
 
-  isComplete: Ember.computed.reads('todo.complete'),
+export default Component.extend({
+  classNames: ['todo-item'],
+  classNameBindings: ['isComplete:complete', 'displayTodo:hidden'],
+
+  isComplete: computed.reads('todo.complete'),
+
+  isHidden: computed.reads('hidden'),
+
+  displayTodo: computed('isComplete', 'isHidden', function() {
+    return this.get('isHidden') && this.get('isComplete');
+  }),
+
   isEditing: false,
 
   actions: {

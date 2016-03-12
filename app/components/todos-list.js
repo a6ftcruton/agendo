@@ -40,8 +40,6 @@ export default Component.extend({
       }
     },
     toggleVisible() {
-      console.log("hitting toggle visible");
-      console.log("hideCompleted = ", this.get('hideCompleted'));
       this.toggleProperty('hideCompleted');
     }
   }
