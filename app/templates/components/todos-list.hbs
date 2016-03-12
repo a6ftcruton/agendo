@@ -1,0 +1,10 @@
+<ul>
+  {{#each model as |todo|}}
+    {{todo-item todo=todo action="update" deleteTodo="deleteTodo" hidden=hideCompleted}}
+  {{/each}}
+</ul>
+<div class="global-options">
+
+  {{complete-all allCompleted=allCompleted hasTodos=hasTodos action="toggleComplete"}}
+  {{toggle-visible hideCompleted=hideCompleted hasTodos=hasTodos action="toggleVisible"}}
+</div>
