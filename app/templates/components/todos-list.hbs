@@ -5,6 +5,9 @@
 </ul>
 <div class="global-options">
 
-  {{complete-all allCompleted=allCompleted hasTodos=hasTodos action="toggleComplete"}}
-  {{toggle-visible hideCompleted=hideCompleted hasTodos=hasTodos action="toggleVisible"}}
+  {{#if hasTodos}}
+    {{complete-all allCompleted=allCompleted hasTodos=hasTodos action="toggleComplete"}}
+    {{toggle-visible hideCompleted=hideCompleted hasTodos=hasTodos action="toggleVisible"}}
+    {{destroy-all action="destroyAll"}}
+  {{/if}}
 </div>

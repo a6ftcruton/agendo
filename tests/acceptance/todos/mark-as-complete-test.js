@@ -53,3 +53,22 @@ test('toggles show/hide for completed todos', function(assert) {
     });
   });
 });
+
+test('it deletes all todos', function(assert) {
+  assert.expect(1);
+  server.createList('todo', 3);
+
+  //stub confirmation dialogue
+  window.confirm = function() { return true; };
+
+  let desc1 = "it removes all todos";
+
+  visit('/');
+
+  andThen(() => {
+    click('.delete-all');
+    andThen(() => {
+      assert.equal(find('.todo-item').length, 0, desc1);
+    });
+  });
+});

@@ -1,14 +1,12 @@
 .todo-container ul {
   list-style: none;
 }
-
 .todo-item {
   width: 80%;
 }
 .mark-as-complete {
   float: left;
 }
-
 .complete {
   opacity: .5;
 },
@@ -19,3 +17,4 @@
 .hidden {
   display: none;
 }
+

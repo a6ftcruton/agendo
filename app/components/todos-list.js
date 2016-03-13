@@ -41,6 +41,9 @@ export default Component.extend({
     },
     toggleVisible() {
       this.toggleProperty('hideCompleted');
+    },
+    destroyAll() {
+      this.sendAction('deleteAll');
     }
   }
 });
