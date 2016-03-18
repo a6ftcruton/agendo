@@ -62,6 +62,17 @@ export default function() {
   this.post('/todos');
   this.put('/todos/:id');
   this.del('/todos/:id');
+
+  this.get('/tags');
+
+  // this.get('/tags', function(){
+  //   let tag = {id: 1, name: "chores"};
+
+  //   return {
+  //     tags: [tag]
+  //   };
+  // });
+  //
   // this.post('/todos', function(db, request) {
   //   console.log("db = ", db);
   //   console.log("request = ", request);
