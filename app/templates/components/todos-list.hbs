@@ -1,5 +1,5 @@
 <ul>
-  {{#each model as |todo|}}
+  {{#each todos as |todo|}}
     {{todo-item todo=todo action="update" deleteTodo="deleteTodo" hidden=hideCompleted}}
   {{/each}}
 </ul>

@@ -1,5 +1,9 @@
 <div class="todo-container">
   <h1>Todos</h1>
   {{todo-input todo=todo action="createTodo"}}
-  {{todos-list model=model update="update" deleteTodo="deleteTodo" deleteAll="deleteAll"}}
+  {{todos-list todos=model.todos update="update" deleteTodo="deleteTodo" deleteAll="deleteAll"}}
+</div>
+
+<div class="drawer">
+  {{tags-list tags=model.tags}}
 </div>
