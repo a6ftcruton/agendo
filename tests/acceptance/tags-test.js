@@ -16,12 +16,25 @@ test('it displays existing tags in the drawer', function(assert) {
   });
 });
 
-skip('it allows new tags to be added from the drawer', function(assert) { });
+test('it allows new tags to be added from the drawer', function(assert) {
+  assert.expect(2);
+  let tagTitle     = "chores";
+  let description  = "tags are added to page after submit";
+  let description2 = "input value is reset after tag submitted";
+
+  visit('/');
+  andThen(() => {
+    fillIn('.drawer input.new-tag', tagTitle);
+    andThen(() => {
+      keyEvent('input.new-tag', 'keyup', '13');
+      andThen(() => {
+        assert.ok(find(`.drawer .tags-list li:contains(${tagTitle})`), description);
+        assert.equal(find('input.new-tag').val(), '', description2);
+      });
+    });
+  });
+});
 
 skip('it displays associated tags next to each todo', function(assert) { });
-
 skip('it displays "add tag" option next to each todo', function(assert) { });
-
-
-//later...
-skip('it allows new tags to be added from the sidebar', function(assert) { });
+skip('clicking existing tag in the sidebar filters tags shown in main panel', function(assert) { });

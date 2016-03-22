@@ -43,6 +43,16 @@ export default Ember.Route.extend({
           record.destroyRecord();
         });
       });
+    },
+
+    //Tags
+    createTag(data) {
+      let tag = this.store.createRecord('tag', { name: data })
+
+      //clear input immediately
+      Ember.$('input.new-tag').val('');
+
+      tag.save();
     }
   }
 });
