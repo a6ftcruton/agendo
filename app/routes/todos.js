@@ -1,7 +1,15 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+
+  clearInput(selector) {
+    Ember.$(selector).val('');
+  },
+
   actions: {
+    //===================================
+    // Todos
+    //===================================
     createTodo(data) {
       //create the record in the store
       if(Ember.isEmpty(data.trim())) {
@@ -9,8 +17,7 @@ export default Ember.Route.extend({
       } else {
         let todo = this.store.createRecord('todo', {title: data});
 
-        //clear input immediately
-        Ember.$('.new-todo input').val('');
+        this.clearInput('.new-todo input');
 
         //persist the record to the server
         todo.save().then(() => {
@@ -45,12 +52,12 @@ export default Ember.Route.extend({
       });
     },
 
-    //Tags
+    //===================================
+    // Tags
+    //===================================
     createTag(data) {
       let tag = this.store.createRecord('tag', { name: data })
-
-      //clear input immediately
-      Ember.$('input.new-tag').val('');
+      this.clearInput('input.new-tag');
 
       tag.save();
     }
