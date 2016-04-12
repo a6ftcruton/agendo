@@ -1,8 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  tagName: 'ul',
-  classNames: ['tags-list'],
+  tagName: 'li',
+  classNames: ['tag'],
 
   actions: {
     createTag(data) {

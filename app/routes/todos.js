@@ -56,10 +56,20 @@ export default Ember.Route.extend({
     // Tags
     //===================================
     createTag(data) {
-      let tag = this.store.createRecord('tag', { name: data })
+      let tag = this.store.createRecord('tag', { name: data });
       this.clearInput('input.new-tag');
 
       tag.save();
+    },
+
+    destroyTag(data) {
+      let confirmation = confirm("Remove this tag from the drawer and from all tagged todos?");
+      if(confirmation) {
+        this.store.findRecord('tag', data.get('id')).then((data) => {
+          data.deleteRecord();
+          data.save();
+        });
+      }
     }
   }
 });

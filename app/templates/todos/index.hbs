@@ -5,6 +5,6 @@
 </div>
 
 <div class="drawer">
-  {{tags-list tags=model.tags createTag="createTag"}}
+  {{tags-list tags=model.tags createTag="createTag" destroyTag="destroyTag"}}
   {{input class="new-tag" value=tag placeholder="Create a new category" action="createTag"}}
 </div>

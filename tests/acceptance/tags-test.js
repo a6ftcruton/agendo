@@ -35,6 +35,23 @@ test('it allows new tags to be added from the drawer', function(assert) {
   });
 });
 
+test('existing tags can be destrored from the drawer through a confirmation', function(assert) {
+  assert.expect(1);
+  server.create('tag', {name: "health"});
+  let description = "it removes tag from drawer after delete";
+
+  //stub confirmation dialogue
+  window.confirm = function() { return true; };
+
+  visit('/');
+  andThen(() => {
+    click('.remove-tag');
+    andThen(() => {
+      assert.equal(find('.tag').length, 0, description);
+    });
+  });
+});
+
 skip('it displays associated tags next to each todo', function(assert) { });
 skip('it displays "add tag" option next to each todo', function(assert) { });
 skip('clicking existing tag in the sidebar filters tags shown in main panel', function(assert) { });

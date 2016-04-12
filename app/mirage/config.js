@@ -65,6 +65,7 @@ export default function() {
 
   this.get('/tags');
   this.post('/tags');
+  this.del('/tags/:id');
 
   // this.get('/tags', function(){
   //   let tag = {id: 1, name: "chores"};
