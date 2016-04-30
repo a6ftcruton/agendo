@@ -1,0 +1,23 @@
+@import 'foundation'; /* import everything */
+/* or just import the bits you need: @import 'foundation/functions'; */
+
+.todo-container ul {
+  list-style: none;
+}
+// .todo-item {
+//   width: 80%;
+// }
+// .mark-as-complete {
+//   float: left;
+// }
+// .complete {
+//   opacity: .5;
+// },
+// .complete .title{
+//   text-decoration: line-through;
+//   text-transform: uppercase;
+// }
+// .hidden {
+//   display: none;
+// }
+

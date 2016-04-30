@@ -52,6 +52,23 @@ test('existing tags can be destrored from the drawer through a confirmation', fu
   });
 });
 
-skip('it displays associated tags next to each todo', function(assert) { });
-skip('it displays "add tag" option next to each todo', function(assert) { });
-skip('clicking existing tag in the sidebar filters tags shown in main panel', function(assert) { });
+test('it displays associated tags next to each todo', function(assert) { 
+  assert.expect(1);
+
+  let tag = server.create('tag', {name: "chores"});
+  let todo = server.create('todo', {title: "sweep the floor", tag_id: tag.id });
+  let description = "";
+
+  //stub confirmation dialogue
+
+  visit('/');
+  andThen(() => {
+    console.log( "todo ==>", todo);
+    console.log( "tag ==>", tag);
+    pauseTest();
+    assert.equal(find('.tag-display:contains("chores")').length, 1, description);
+  });
+});
+
+// skip('it displays "add tag" option next to each todo', function(assert) { });
+// skip('clicking existing tag in the sidebar filters tags shown in main panel', function(assert) { });
