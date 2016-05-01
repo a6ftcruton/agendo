@@ -4,13 +4,17 @@ import moduleForAcceptance from 'agendo/tests/helpers/module-for-acceptance';
 moduleForAcceptance('Acceptance | todos/crud');
 
 test('visiting root', function(assert) {
+  console.log("0. hitting first test");
   assert.expect(1);
   const description = "it displays existing todos";
   server.createList('todo', 3);
 
+  console.log("1. hitting first test");
   visit('/');
+  console.log("2. hitting first test");
 
   andThen(function() {
+    console.log("3. hitting first test");
     assert.ok(find('.todo-item').length > 0, description);
   });
 });

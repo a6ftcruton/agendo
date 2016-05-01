@@ -58,7 +58,17 @@ export default function() {
   //   };
   // });
 
-  this.get('/todos');
+  this.get('/todos', function(db, request) {
+    console.log( "db ==>", db);
+    console.log( "request ==>", request);
+
+    return {
+      data: db.todos.map(attrs => (
+        { type: 'todos', id: attrs.id, attributes: attrs }
+      ))
+    };
+  });
+
   this.post('/todos');
   this.put('/todos/:id');
   this.del('/todos/:id');
