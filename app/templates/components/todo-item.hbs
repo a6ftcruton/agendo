@@ -4,6 +4,6 @@
   <!-- currently, the handlebars input helper doesnt support a click action -->
   <input type="checkbox" checked={{todo.isComplete}} onclick={{action "toggleCompleted"}} class="mark-as-complete">
   {{todo-title title=todo.title action='edit'}}
-  <button class="delete-todo" {{action "deleteTodo" todo}}>X</button>
+  <button class="delete-todo tiny button" {{action "deleteTodo" todo}}>&times;</button>
 {{/if}}
 

@@ -1,10 +1,12 @@
-<div class="todo-container">
-  <h1>Todos</h1>
-  {{todo-input todo=todo action="createTodo"}}
-  {{todos-list todos=model.todos update="update" deleteTodo="deleteTodo" deleteAll="deleteAll"}}
-</div>
+<div class="wrapper-main">
+  <div class="todo-container">
+    <h1>Agendo</h1>
+    {{todo-input todo=todo action="createTodo"}}
+    {{todos-list todos=model.todos update="update" deleteTodo="deleteTodo" deleteAll="deleteAll"}}
+  </div>
 
-<div class="drawer">
-  {{tags-list tags=model.tags createTag="createTag" destroyTag="destroyTag"}}
-  {{input class="new-tag" value=tag placeholder="Create a new category" action="createTag"}}
+  <div class="drawer">
+    {{tags-list tags=model.tags createTag="createTag" destroyTag="destroyTag"}}
+    {{input class="new-tag" value=tag placeholder="Create a new category" action="createTag"}}
+  </div>
 </div>
