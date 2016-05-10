@@ -1,12 +1,10 @@
-<h1>TAGS:</h1>
-TODO: {{todo}}
-TODOTAGS: {{todo.tags}}
-TODOLENGTH: {{todo.tags.length}}
+{{#if todo.tags.length}}
+  <p>TAGS:</p>
+  {{#each tags as |tag|}}
+    <p>NAME[ {{tag.name}} ]</p>
+  {{/each}}
 
-{{#each tags as |tag|}}
-  <p>NAME[ {{tag.name}} ]</p>
-{{/each}}
-
-{{#each todo.tags as |tag|}}
-  <p>Tag name: [ {{tag.name}} ]</p>
-{{/each}}
+  {{#each todo.tags as |tag|}}
+    <p>Tag name: [ {{tag.name}} ]</p>
+  {{/each}}
+{{/if}}
