@@ -6,11 +6,11 @@ moduleForComponent('edit-todo', 'Integration | Component | edit todo', {
 });
 
 test('it renders', function(assert) {
+  let desc1 = "it has an input";
+  let desc2 = "has a cancel option";
   
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });" + EOL + EOL +
-
   this.render(hbs`{{edit-todo}}`);
 
-  assert.equal(this.$().text().trim(), '');
+  assert.ok(this.$('input'), desc1);
+  assert.equal(this.$().text().trim(), 'Cancel', desc2);
 });

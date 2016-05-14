@@ -12,14 +12,5 @@ test('it renders', function(assert) {
 
   this.render(hbs`{{destroy-all}}`);
 
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:" + EOL +
-  this.render(hbs`
-    {{#destroy-all}}
-      template block text
-    {{/destroy-all}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.equal(this.$().text().trim(), 'Delete All');
 });

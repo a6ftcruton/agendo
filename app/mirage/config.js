@@ -7,8 +7,6 @@ export default function() {
   // ---------- TODOS -----------
   //GET TODOS#index
   this.get('/todos', function(db) {
-    console.log("HIT GET#index in mirage");
-    console.log( "db ==>", db);
 
     return {
       data: db.todos.map(attrs => (
@@ -23,7 +21,6 @@ export default function() {
     return {
       data: {
         type: 'todos',
-        // id: id,
         attributes: record
       }
     };
@@ -31,11 +28,12 @@ export default function() {
 
   this.patch('/todos/:id', function(db, request) {
     let id = request.params.id;
+    let requestBody = JSON.parse(request.requestBody);
     return {
       data: {
         type: 'todos',
         id: id,
-        attributes: db.todos.find(id)
+        attributes: requestBody.data.attributes
       }
     };
   });
@@ -64,23 +62,27 @@ export default function() {
     };
   });
 
-  this.post('/tags');
-  this.del('/tags/:id');
+  this.post('/tags', function(db, request) {
+    let attrs = JSON.parse(request.requestBody).tag;
+    let record = db.tags.insert(attrs);
+    return {
+      data: {
+        type: 'tags',
+        attributes: record
+      }
+    };
+  });
 
-  // this.get('/tags', function(){
-  //   let tag = {id: 1, name: "chores"};
+  this.del('/tags/:id', function(db, request) {
+    let id = request.params.id;
 
-  //   return {
-  //     tags: [tag]
-  //   };
-  // });
-  //
-  // this.post('/todos', function(db, request) {
-  //   console.log("db = ", db);
-  //   console.log("request = ", request);
-  //   var attrs = JSON.parse(request.requestBody).todo;
-  //   console.log("attrs = ", attrs);
-  //   var todo = db.todos.insert(attrs);
-  //   return todo;
-  // });
+    return {
+      data: {
+        type: 'tags',
+        id: id,
+        attributes: db.tags.find(id)
+      }
+    };
+  });
+
 }

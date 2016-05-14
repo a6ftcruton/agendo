@@ -8,15 +8,11 @@ export default DS.JSONAPIAdapter.extend({
   namespace: ENV.APP.namespace,
 
   //TODO - overriding ajax method to see requests being sent -- debugging only
-  ajax(url, type, options) {
-    console.log( "~~~~~ REQUEST INFO ~~~~~");
-    console.log( "url ==>", url);
-    console.log( "type ==>", type);
-    console.log( "options ==>", options);
-    return this._super(...arguments);
-  }
+  // ajax(url, type, options) {
+    // console.log( "~~~~~ REQUEST INFO ~~~~~");
+    // console.log( "url ==>", url);
+    // console.log( "type ==>", type);
+    // console.log( "options ==>", options);
+    // return this._super(...arguments);
+  // }
 });
-
-console.log( "CURRENT ENVIRONMENT ==>", ENV.environment);
-console.log( "CURRENT HOST ==>", ENV.APP.host);
-console.log( "CURRENT NAMESPACE ==>", ENV.APP.namespace);

@@ -16,5 +16,5 @@ test('it renders', function(assert) {
   this.set('todo', todo);
   this.render(hbs`{{todo-item todo=todo}}`);
 
-  assert.equal(this.$().text().trim(), todo.title);
+  assert.ok(this.$().text().indexOf(todo.title) >= 0);
 });

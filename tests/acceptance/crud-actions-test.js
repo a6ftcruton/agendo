@@ -4,25 +4,19 @@ import moduleForAcceptance from 'agendo/tests/helpers/module-for-acceptance';
 moduleForAcceptance('Acceptance | todos/crud');
 
 test('visiting root', function(assert) {
-  server.logging = true;
 
-  console.log("0. hitting first test");
   assert.expect(1);
   const description = "it displays existing todos";
   server.createList('todo', 3);
 
-  console.log("1. hitting first test");
   visit('/');
-  console.log("2. hitting first test");
 
   andThen(function() {
-    console.log("3. hitting first test");
     assert.ok(find('.todo-item').length > 0, description);
   });
 });
 
 test('creating a new todo', function(assert) {
-  server.logging = true;
   // assert.expect(2);
   const description  = "it displays a newly created todo in the todos list";
   const description2 = "it clears the input field once record persists";
@@ -44,7 +38,6 @@ test('creating a new todo', function(assert) {
 });
 
 test('editing a todo', function(assert) {
-  server.logging = true;
   server.create('todo', {title: "initial idea"});
   const description  = "edit input disappears after submit";
   const description1 = "edited todo is visible on page with updated text";
@@ -66,7 +59,6 @@ test('editing a todo', function(assert) {
 });
 
 test('deleting a todo', function(assert) {
-  server.logging = true;
   server.create('todo', {title: "you will delete me"});
   const description = "a deleted todo is removed from the page";
 
@@ -80,7 +72,6 @@ test('deleting a todo', function(assert) {
 });
 
 test('marking a todo as complete', function(assert) {
-  server.logging = true;
   server.create('todo', {title: "you complete me"});
   const description = "adds a class of 'complete' to the todo";
 

@@ -1,5 +1,6 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
+import Ember from 'ember';
 
 moduleForComponent('tag-item', 'Integration | Component | tag item', {
   integration: true
@@ -7,19 +8,16 @@ moduleForComponent('tag-item', 'Integration | Component | tag item', {
 
 test('it renders', function(assert) {
   
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });" + EOL + EOL +
+  let desc1 = "it renders passed in name"; 
+  let desc2 = "it renders a cancel 'x'";
+  let name  = "TAG";
+  let tag   = Ember.Object.create({
+    name: name
+  });
 
-  this.render(hbs`{{tag-item}}`);
+  this.set('tag', tag);
+  this.render(hbs`{{tag-item tag=tag}}`);
 
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:" + EOL +
-  this.render(hbs`
-    {{#tag-item}}
-      template block text
-    {{/tag-item}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.ok(this.$().text().indexOf(`${name}`) >= 0, desc1);
+  assert.equal(this.$('.remove-tag').text().trim(), '\u00D7', desc2);
 });
