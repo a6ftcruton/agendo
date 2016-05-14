@@ -73,14 +73,19 @@ body {
   .drawer-arrow {
     transform: rotate(180deg);
   }
+  .global-options {
+    //TODO - animate this transition 
+    right: 220px;
+    // transform: translateX(220px);
+  }
 }
 
 // Global Options
  .global-options {
    position: fixed;
+   transition: all .3s linear;
    right: 0;
-   left: 85%;
-   top: 10%;
+   top: 30%;
    div {
      background-color: $blue;
      margin-bottom: 8px;
